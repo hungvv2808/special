@@ -1,31 +1,40 @@
 export const CONST = {
   TIMELINE: [
     { 
-      key: '202301' 
+      key: '202301',
+      description: 'Hello',
     }, 
     { 
-      key: '202212' 
+      key: '202212',
+      description: 'Hello',
     }, 
     { 
-      key: '202211' 
+      key: '202211',
+      description: 'Hello',
     }, 
     { 
-      key: '202210' 
+      key: '202210',
+      description: 'Hello',
     }, 
     { 
-      key: '202209' 
+      key: '202209',
+      description: 'Hello',
     }, 
     { 
-      key: '202208' 
+      key: '202208',
+      description: 'Hello',
     }, 
     { 
-      key: '202207' 
+      key: '202207',
+      description: 'Hello',
     }, 
     { 
-      key: '202206' 
+      key: '202206',
+      description: 'Hello',
     }, 
     { 
-      key: '202205' 
+      key: '202205',
+      description: 'Hello',
     }
   ],
 }

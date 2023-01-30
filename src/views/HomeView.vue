@@ -1,24 +1,22 @@
 <template>
   <div class="home">
     <div class="home__element">
+      <card-birthday style="display: block" />
       <child-lines />
-      <card-birthday style="display: none" />
     </div>
-    <fire-works-action style="display: none" />
+    <fire-works-action style="display: block" />
   </div>
 </template>
 
 <script>
 import ChildLines from '@/components/ChildLines.vue';
 import CardBirthday from '@/components/CardBirthday.vue';
-import FireWorksAction from '@/components/FireWorksAction.vue';
 
 export default {
   name: 'HomeView',
   components: {
     ChildLines,
     CardBirthday,
-    FireWorksAction
   }
 }
 </script>

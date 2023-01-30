@@ -1,13 +1,21 @@
 <template>
-  <div class="child-lines">
-    <masonry-wall :items="items" :ssr-columns="18" :column-width="100" :gap="5">
+  <div class="child-lines" ref="scrollContainer">
+    <masonry-wall :items="items" :column-width="1000" :gap="5" :scroll-container="$refs.scrollContainer">
       <template #default="{ item, index }">
-        <div :id="index">
-          <img 
-            class="child-lines__img wow slideInLeft" data-wow-delay="1s" data-wow-duration="5s"
+        <div
+          :id="index"
+          class="wow slideInLeft"
+          data-wow-delay="1s"
+          data-wow-duration="5s"
+        >
+          <img
+            class="child-lines__img"
+            v-lazy
+            :data-src="require(`@/assets/u/${item.path}`)"
             :src="require(`@/assets/u/${item.path}`)"
-            :alt="item.title" 
-            loading="lazy" />
+            :alt="index"
+            lazy-load
+          />
         </div>
       </template>
     </masonry-wall>
@@ -15,43 +23,47 @@
 </template>
 
 <script>
-import WOW from 'wow.js'
+import WOW from "wow.js";
 
 export default {
-  name: 'ChildLines',
+  name: "ChildLines",
   data() {
     return {
-      images: [],
-      items: []
-    }
+      items: [],
+    };
   },
-  computed: {
-  },
+  computed: {},
   created() {
     new WOW().init();
-    this.importAll(require.context('@/assets/u/', true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/));
+
+    const all = require.context("@/assets/u/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    this.importAll(all);
   },
   mounted() {
-    // new WOW().init(); 
   },
   methods: {
     importAll(r) {
-      r.keys().forEach(key => (this.items.push({
-        title: key,
-        path: key.replace('./', ''),
-      })));
+      r.keys().forEach((key) => {
+        const keyName = key.split('/')
+        this.items.push({
+          title: keyName.at(-1),
+          path: key.replace("./", ""),
+        })
+      });
     },
-  }
-}
+  },
+};
 </script>
 
-<style lang='scss'>
-  .child-lines {
-    &__img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      image-orientation: from-image;
-    }
+<style lang="scss">
+.child-lines {
+  width: 100%;
+  height: 100%;
+  &__img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    image-orientation: from-image;
   }
+}
 </style>
