@@ -28,10 +28,11 @@ export default {
   computed: {
   },
   created() {
+    new WOW().init();
     this.importAll(require.context('@/assets/u/', true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/));
   },
   mounted() {
-    new WOW().init();
+    // new WOW().init(); 
   },
   methods: {
     importAll(r) {
