@@ -2,9 +2,9 @@
   <div class="home">
     <div class="home__element">
       <child-lines />
-      <card-birthday />
+      <card-birthday style="display: none" />
     </div>
-    <fire-works-action />
+    <fire-works-action style="display: none" />
   </div>
 </template>
 

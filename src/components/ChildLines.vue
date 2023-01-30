@@ -1,11 +1,13 @@
 <template>
   <div class="child-lines">
-    <masonry-wall :items="items" :ssr-columns="10" :column-width="100" :gap="5">
+    <masonry-wall :items="items" :ssr-columns="18" :column-width="100" :gap="5">
       <template #default="{ item, index }">
-        <div :style="{ height: `${index * 100}px` }">
-          <ion-icon name="heart"></ion-icon>
-          <h1>{{ item.title }}</h1>
-          <span>{{ item.description }}</span>
+        <div :id="index">
+          <img 
+            class="child-lines__img wow slideInLeft" data-wow-delay="1s" data-wow-duration="5s"
+            :src="require(`@/assets/u/${item.path}`)"
+            :alt="item.title" 
+            loading="lazy" />
         </div>
       </template>
     </masonry-wall>
@@ -13,21 +15,14 @@
 </template>
 
 <script>
+import WOW from 'wow.js'
+
 export default {
   name: 'ChildLines',
   data() {
     return {
       images: [],
-      items: [
-        {
-          title: 'First',
-          description: 'The first item.',
-        },
-        {
-          title: 'Second',
-          description: 'The second item.',
-        },
-      ]
+      items: []
     }
   },
   computed: {
@@ -35,9 +30,15 @@ export default {
   created() {
     this.importAll(require.context('@/assets/u/', true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/));
   },
+  mounted() {
+    new WOW().init();
+  },
   methods: {
     importAll(r) {
-      r.keys().forEach(key => (this.images.push(key.replace('./', ''))));
+      r.keys().forEach(key => (this.items.push({
+        title: key,
+        path: key.replace('./', ''),
+      })));
     },
   }
 }
