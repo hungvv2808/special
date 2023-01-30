@@ -12,7 +12,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   @extend %flex-center;
-  background-color: #020202;
   text-align: center;
+  background-color: #020202;
   color: #2c3e50;
+
+  #app {
+    width: 100%;
+    height: 100%;
+  }
 }
