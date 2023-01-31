@@ -59,21 +59,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-$white: #fff;
-$gray: #301E67;
-
-$blue: #21E1E1;
-$pink: #FF75A0;
-$orange: #FF7B54;
-$yellow: #FFD56F;
-$green: #6CC4A1;
-$yellow-light: #FFFBAC;
-$purple: #A555EC;
-$brown: #C74B50;
-$red: #DD5353;
-$grey: #ECECEC;
-
+<style lang="scss" scoped>
+@import '@/scss/variables';
 $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple, $brown, $red, $grey;
 
 .yearly-timeline {
