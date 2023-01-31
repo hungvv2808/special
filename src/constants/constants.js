@@ -1,6 +1,12 @@
 export const CONST = {
   TIMELINE: [
     { 
+      key: '202302',
+      value: '2023-02',
+      icon: '',
+      description: 'Hello',
+    }, 
+    { 
       key: '202301',
       value: '2023-01',
       icon: '',
@@ -55,4 +61,5 @@ export const CONST = {
       description: 'Hello',
     }
   ],
+  
 }

@@ -1,69 +1,42 @@
 <template>
-  <div class="timelines">
-    <div class="yearly-timeline">
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-instagram"></i></div>
-          <h3 class="title">2018-2021</h3>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-twitter"></i></div>
-          <h3 class="title">2013-2017</h3>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-facebook"></i></div>
-          <h3 class="title">2009-2012</h3>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-linkedin"></i></div>
-          <h3 class="title">2006-2009</h3>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-linkedin"></i></div>
-          <h3 class="title">2006-2009</h3>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-linkedin"></i></div>
-          <h3 class="title">2006-2009</h3>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-linkedin"></i></div>
-          <h3 class="title">2006-2009</h3>
-        </div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-content">
-          <div class="timeline-icon"><i class="fa fa-linkedin"></i></div>
-          <h3 class="title">2006-2009</h3>
-        </div>
+  <div class="yearly-timeline">
+    <div class="timeline" v-for="tl in timelines" :key="tl.key">
+      <div class="timeline-content">
+        <h3 class="title">{{ tl.value }}</h3>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { CONST } from '@/constants/constants'
+
 export default {
   name: "TimeLine",
+  data() {
+    return {
+      timelines: CONST.TIMELINE,
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
-$border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple, $brown, $red, $grey;
+@import "@/scss/variables";
+
+$border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple,
+  $brown, $red, $grey;
 
 .yearly-timeline {
+  width: 50vw;
+  height: 92vh;
+  margin: 2rem auto;
+  overflow: hidden scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &::after {
     content: "";
     display: block;
@@ -71,19 +44,20 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple, 
   }
 
   .timeline {
-    width: calc(50% - 10px);
+    width: calc(50% - 15px);
     padding: 0 30px 30px 0;
     float: left;
     position: relative;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       content: "";
       height: 60px;
       width: 2px;
       border-left: 2px solid $blue;
       transform: rotate(-45deg);
       position: absolute;
-      right: 30px;
+      right: 27px;
       bottom: 0;
     }
     &::after {
@@ -148,23 +122,11 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple, 
         text-decoration: none;
       }
 
-      .timeline-icon {
-        color: $gray;
-        font-size: 35px;
-      }
       .title {
         font-size: 22px;
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
-        margin: 0;
-      }
-      .description {
-        color: $gray;
-        font-size: 13px;
-        font-weight: 400;
-        letter-spacing: 0.5px;
-        line-height: 18px;
         margin: 0;
       }
     }
