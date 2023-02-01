@@ -1,6 +1,12 @@
 <template>
   <div class="yearly-timeline">
-    <div class="timeline" v-for="tl in timelines" :key="tl.key">
+    <div
+      class="timeline wow animate__fadeInDown"
+      v-for="(tl, index) in timelines"
+      :key="tl.key"
+      :data-wow-delay="`${0.5 * (index + 1)}s`"
+      :data-wow-duration="`${index + 1}s`"
+    >
       <div class="timeline-content">
         <h3 class="title">{{ tl.value }}</h3>
       </div>
@@ -9,15 +15,19 @@
 </template>
 
 <script>
-import { CONST } from '@/constants/constants'
+import { CONST } from "@/constants/constants";
+import WOW from "wow.js";
 
 export default {
   name: "TimeLine",
   data() {
     return {
       timelines: CONST.TIMELINE,
-    }
-  }
+    };
+  },
+  mounted() {
+    new WOW().init();
+  },
 };
 </script>
 
@@ -48,6 +58,10 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple,
     padding: 0 30px 30px 0;
     float: left;
     position: relative;
+
+    &.wow {
+      visibility: hidden;
+    }
 
     &::before,
     &::after {
