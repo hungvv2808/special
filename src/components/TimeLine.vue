@@ -1,11 +1,10 @@
 <template>
   <div class="yearly-timeline">
     <div
-      class="timeline wow animate__fadeInDown"
       v-for="(tl, index) in timelines"
+      :class="`timeline wow animate__bounceIn${0 === index % 2 ? 'Left' : 'Right'}`"
       :key="tl.key"
-      :data-wow-delay="`${0.5 * (index + 1)}s`"
-      :data-wow-duration="`${index + 1}s`"
+      :data-wow-duration="`${setTimeDuration(index)}s`"
     >
       <div class="timeline-content">
         <h3 class="title">{{ tl.value }}</h3>
@@ -26,7 +25,18 @@ export default {
     };
   },
   mounted() {
-    new WOW().init();
+    new WOW({
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 5,
+      scrollContainer: '.yearly-timeline',
+    }).init();
+  },
+  methods: {
+    setTimeDuration(delay) {
+      const positionScroll = 6;
+      return (0 === delay ? delay + 0.5 : delay > positionScroll ? positionScroll / 3 : delay) / 2;
+    }
   },
 };
 </script>
@@ -118,7 +128,7 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple,
       align-items: center;
       justify-content: center;
       color: $gray;
-      padding: 30px 35px 35px;
+      padding: 30px;
       border-radius: 15px 15px 0 15px;
       position: relative;
 
