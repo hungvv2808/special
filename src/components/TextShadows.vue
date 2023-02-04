@@ -1,6 +1,6 @@
 <template>
-  <div class="content">
-    <h2 class="text_shadows">{{ label }}</h2>
+  <div class="text-shadows">
+    <h2 class="content">{{ label }}</h2>
   </div>
 </template>
 
@@ -22,13 +22,13 @@ $color-tertiary: #f28b7d;
 $color-quaternary: #f07a6a;
 $color-quinary: #ee6352;
 
-.content {
+.text-shadows {
   display: flex;
   justify-content: center;
   font-weight: 300;
   font-size: 1.25rem;
 
-  .text_shadows {
+  .content {
     text-shadow: 3px 3px 0 $color-secondary, 6px 6px 0 $color-tertiary,
       9px 9px $color-quaternary, 12px 12px 0 $color-quinary;
     font-family: "Titan One", sans-serif;

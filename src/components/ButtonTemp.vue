@@ -1,6 +1,6 @@
 <template>
-  <div class="cta">
-    <span>{{label}}</span>
+  <div class="button">
+    <span>{{ label }}</span>
     <svg width="13px" height="10px" viewBox="0 0 13 10">
       <path d="M1,5 L11,5"></path>
       <polyline points="8 1 12 5 8 9"></polyline>
@@ -10,20 +10,21 @@
 
 <script>
 export default {
-  name: 'ButtonTemp',
+  name: "ButtonTemp",
   props: {
     label: String,
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables';
+@import "@/scss/variables";
 
-.cta {
-  position: relative;
-  margin: auto;
-  padding: 19px 22px;
+.button {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  z-index: 2;
   transition: all 0.2s ease;
 
   &.custom {
@@ -38,21 +39,25 @@ export default {
   &::before {
     content: "";
     position: absolute;
-    top: 2px;
-    left: 0;
+    top: -17px;
+    left: -17px;
     display: block;
     border-radius: 28px;
-    background: $red;
+    background: #dd5353;
     width: 56px;
     height: 56px;
     transition: all 0.3s ease;
   }
-  &:hover::before {
-    width: 100%;
-    background: $red;
-  }
-  &:hover svg {
-    transform: translateX(0);
+  &:hover {
+    cursor: pointer;
+
+    &::before {
+      width: 125%;
+      background: $red;
+    }
+    svg {
+      transform: translateX(0);
+    }
   }
   &:active {
     transform: scale(0.96);

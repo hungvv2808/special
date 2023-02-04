@@ -91,5 +91,9 @@ export const CONST = {
       }
     }
   ],
-  
+  PAGES: {
+    poster: 0,
+    details: 1,
+    end: 2,
+  }
 }
