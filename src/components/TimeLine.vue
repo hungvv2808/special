@@ -48,9 +48,8 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple,
   $brown, $red, $grey;
 
 .yearly-timeline {
-  width: 53vw;
+  width: 100%;
   height: 92vh;
-  margin: 2rem auto;
   overflow: hidden scroll;
 
   &::-webkit-scrollbar {

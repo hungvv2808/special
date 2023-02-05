@@ -12,7 +12,9 @@
     "animate.css": "^4.1.1",
     "core-js": "^3.8.3",
     "hover.css": "^2.3.2",
+    "swiper": "^8.4.7",
     "vue": "^3.2.13",
+    "vue-awesome-swiper": "^5.0.1",
     "vue-router": "^4.0.3",
     "webp-converter": "^2.3.3",
     "wow.js": "^1.2.2"

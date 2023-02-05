@@ -1,8 +1,8 @@
 <template>
   <div class="details">
     <div class="details__data">
-      <time-line />
-      <child-lines class="none" />
+      <time-line class=""/>
+      <images-slider class="" />
     </div>
     <div class="details__background">
       <fire-works-action />
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ChildLines from "@/components/ChildLines.vue";
+import ImagesSlider from "@/components/ImagesSlider.vue";
 import FireWorksAction from "@/components/FireWorksAction.vue";
 import TimeLine from "@/components/TimeLine.vue";
 import WOW from "wow.js";
@@ -29,7 +29,7 @@ import WOW from "wow.js";
 export default {
   name: "HomeDetails",
   components: {
-    ChildLines,
+    ImagesSlider,
     FireWorksAction,
     TimeLine,
   },
@@ -53,7 +53,8 @@ export default {
 .details {
   display: flex;
   position: relative;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 
   &__data {
     display: flex;
@@ -64,6 +65,17 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    margin: 0 2rem;
+    gap: 10px;
+
+    > div {
+      &:first-child {
+        flex-basis: 40%;
+      }
+      &:last-child {
+        flex-basis: 60%;
+      }
+    }
   }
   &__background {
     position: absolute;
@@ -75,21 +87,22 @@ export default {
   &__buttons {
     position: fixed;
     bottom: 15px;
-    right: 15px;
     z-index: 2;
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
 
     .btn {
       padding: 0;
       border: none;
-      width: 159px;
-      height: 56px;
       border-radius: 40px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 120px;
+      height: 40px;
       gap: 5px;
     }
 
