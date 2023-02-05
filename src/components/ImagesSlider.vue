@@ -1,13 +1,5 @@
 <template>
-  <swiper
-    class="swiper"
-    :modules="modules"
-    :slides-per-view="1"
-    :space-between="30"
-    :loop="true"
-    :pagination="{ clickable: true }"
-    :navigation="true"
-  >
+  <swiper class="swiper" v-bind="options">
     <swiper-slide>Slide 1</swiper-slide>
     <swiper-slide>Slide 2</swiper-slide>
     <swiper-slide>Slide 3</swiper-slide>
@@ -20,16 +12,12 @@
 </template>
 
 <script>
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, EffectCoverflow, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
-// import swiper module styles
-import "swiper/css";
-import "swiper/css/pagination";
-// more module style...
+import 'swiper/css/effect-coverflow';
 
 export default {
   name: "ImagesSlider",
@@ -39,9 +27,35 @@ export default {
   },
   setup() {
     return {
-      modules: [Pagination, Navigation],
+      modules: [Pagination, Navigation, EffectCoverflow, Autoplay],
     };
   },
+  data() {
+    return {
+      options: {
+        modules: this.modules,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        navigation: true,
+        pagination: true,
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        },
+      }
+    }
+  }
 };
 </script>
 
@@ -49,7 +63,7 @@ export default {
 @import "@/scss/variables";
 
 .swiper {
-  height: 100vh;
+  height: $details-height;
 
   .swiper-wrapper {
     .swiper-slide {
@@ -57,6 +71,7 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+      background: $purple;
     }
   }
 

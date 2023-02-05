@@ -55,6 +55,7 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
+  user-select: none;
 
   &__data {
     display: flex;
@@ -87,11 +88,12 @@ export default {
   &__buttons {
     position: fixed;
     bottom: 15px;
+    right: 15px;
     z-index: 2;
     display: flex;
     gap: 15px;
-    width: 100%;
-    justify-content: center;
+    /* width: 100%; */
+    /* justify-content: center; */
 
     .btn {
       padding: 0;
