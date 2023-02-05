@@ -2,7 +2,7 @@
   <div class="yearly-timeline">
     <div
       v-for="(tl, index) in timelines"
-      :class="`timeline wow animate__bounceIn${0 === index % 2 ? 'Left' : 'Right'}`"
+      :class="`timeline hvr-rotate wow animate__bounceIn${0 === index % 2 ? 'Left' : 'Right'}`"
       :key="tl.key"
       :data-wow-duration="`${setTimeDuration(index)}s`"
     >
@@ -48,7 +48,7 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple,
   $brown, $red, $grey;
 
 .yearly-timeline {
-  width: 50vw;
+  width: 53vw;
   height: 92vh;
   margin: 2rem auto;
   overflow: hidden scroll;

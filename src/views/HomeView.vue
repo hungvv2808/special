@@ -4,7 +4,7 @@
       <home-poster @change-to-details="changePage" />
     </div>
     <div class="home__detail" v-else-if="pages.details === isChange">
-      <home-details />
+      <home-details @change-to-details="changePage" />
     </div>
     <div class="home__end" v-else-if="pages.end === isChange">
       <home-end />

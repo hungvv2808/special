@@ -14,13 +14,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/variables.scss";
+
 .text-typing {
   display: grid;
   place-content: center;
   text-align: center;
-  height: 100vh;
   font-family: Courier New, monospace;
-  background: rgba(255,230,230, 1);
+  background: $background--end;
   overflow-x: hidden;
 
   h1 {
@@ -37,7 +38,7 @@ export default {
       height: 100%;
     }
     &::before {
-      background: rgba(255,230,230, 1);
+      background: $background--end;
       animation: write 2.5s steps(25) 0.5s forwards; /* Number of steps */
       width: 100%;
     }

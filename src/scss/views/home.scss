@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .home {
   display: flex;
   position: relative;
@@ -9,17 +11,19 @@
     z-index: 2;
   }
 
-  &__welcome {
-    background: radial-gradient(circle, #f8e0d8 30%, #f5c5b5);
+  &__welcome, &__end {
     width: 100vw;
     height: 100vh;
     position: relative;
+  }
+
+  &__welcome {
+    background: $background--base;
   }
   &__detail {
     width: 100%;
   }
   &__end {
-    width: 100vw;
-    height: 100vh;
+    background: $background--end;
   }
 }

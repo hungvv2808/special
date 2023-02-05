@@ -17,6 +17,6 @@ export default {
 
 <style lang="scss" scoped>
 .end {
-
+  
 }
 </style>

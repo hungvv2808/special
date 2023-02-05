@@ -8,8 +8,12 @@
       <fire-works-action />
     </div>
     <div class="details__buttons">
-      <button class="btn hvr-icon-forward hvr-sweep-to-right hvr-rotate">
-        Test
+      <button class="btn hvr-icon-back hvr-sweep-to-left hvr-grow wow animate__zoomIn" data-wow-duration="0.5s" @click="changeToDetails('poster')">
+        <ion-icon name="arrow-back-outline" class="hvr-icon"></ion-icon>
+        Prev
+      </button>
+      <button class="btn hvr-icon-forward hvr-sweep-to-right hvr-grow wow animate__zoomIn" data-wow-duration="0.7s" @click="changeToDetails('end')">
+        Next
         <ion-icon name="arrow-forward-outline" class="hvr-icon"></ion-icon>
       </button>
     </div>
@@ -20,6 +24,7 @@
 import ChildLines from "@/components/ChildLines.vue";
 import FireWorksAction from "@/components/FireWorksAction.vue";
 import TimeLine from "@/components/TimeLine.vue";
+import WOW from "wow.js";
 
 export default {
   name: "HomeDetails",
@@ -31,11 +36,19 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    new WOW().init();
+  },
+  methods: {
+    changeToDetails(moveTo) {
+      this.$emit('change-to-details', moveTo);
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import "@/scss/variables.scss";
 
 .details {
   display: flex;
@@ -60,9 +73,24 @@ export default {
     overflow: hidden;
   }
   &__buttons {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 2;
+    display: flex;
+    gap: 10px;
+
     .btn {
-      width: 100px;
-      height: 100px;
+      padding: 0;
+      border: none;
+      width: 159px;
+      height: 56px;
+      border-radius: 40px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
     }
 
     [class*="hvr-"]:not(.hvr-icon) {
