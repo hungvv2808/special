@@ -1,38 +1,46 @@
 <template>
   <div class="home">
-    <div class="home__element">
-      <card-birthday style="display: block" />
-      <child-lines />
+    <div class="home__welcome" v-if="pages.poster === isChange">
+      <home-poster @change-to-details="changePage" />
     </div>
-    <fire-works-action style="display: block" />
+    <div class="home__detail" v-else-if="pages.details === isChange">
+      <home-details @change-to-details="changePage" />
+    </div>
+    <div class="home__end" v-else-if="pages.end === isChange">
+      <home-end />
+    </div>
   </div>
 </template>
 
 <script>
-import ChildLines from '@/components/ChildLines.vue';
-import CardBirthday from '@/components/CardBirthday.vue';
+import { CONST } from '@/constants/constants';
+import HomePoster from '@/views/ViewsComponent/HomePoster.vue';
+import HomeDetails from '@/views/ViewsComponent/HomeDetails.vue';
+import HomeEnd from '@/views/ViewsComponent/HomeEnd.vue';
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    ChildLines,
-    CardBirthday,
+    HomePoster,
+    HomeDetails,
+    HomeEnd,
+  },
+  data() {
+    return {
+      isChange: CONST.PAGES.details,
+      pages: CONST.PAGES,
+    };
+  },
+  computed: {
+  },
+  methods: {
+    changePage(pageName) {
+      this.isChange = CONST.PAGES[pageName];
+    },
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-  .home {
-    position: relative;
-
-    &__element {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      user-select: none;
-    }
-  }
+@import '@/scss/views/home';
 </style>

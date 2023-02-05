@@ -1,0 +1,29 @@
+@import '../variables.scss';
+
+.home {
+  display: flex;
+  position: relative;
+
+  .buttons {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    z-index: 2;
+  }
+
+  &__welcome, &__end {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  &__welcome {
+    background: $background--base;
+  }
+  &__detail {
+    width: 100%;
+  }
+  &__end {
+    background: $background--end;
+  }
+}

@@ -169,13 +169,9 @@ export default {
 };
 </script>
 
-<style>
-body {
-  margin: 0;
-  background: #020202;
-  cursor: crosshair;
-}
+<style lang="scss" scoped>
 canvas {
+  background: radial-gradient(circle, #f8e0d8 30%, #f5c5b5);
   display: block;
 }
 </style>
