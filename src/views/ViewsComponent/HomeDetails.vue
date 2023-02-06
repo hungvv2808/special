@@ -1,18 +1,40 @@
 <template>
   <div class="details">
     <div class="details__data">
-      <time-line class=""/>
-      <images-slider class="" />
+      <time-line @change-timeline="changeTimeline" />
+      <div
+        class="moments"
+        v-if="undefined !== timelineKey && images.length > 0"
+      >
+        <text-shadows class="wow animate__bounce" data-wow-duration="1s" :label="timelineTitle" />
+        <images-slider class="wow animate__bounce" data-wow-duration="2s" :images="images" />
+      </div>
+      <div class="moments" style="justify-content: center" v-else>
+        <p
+          class="moments__text-shadow wow animate__backInDown"
+          data-wow-duration="1s"
+        >
+          Let's look back your moments
+        </p>
+      </div>
     </div>
     <div class="details__background">
       <fire-works-action />
     </div>
     <div class="details__buttons">
-      <button class="btn hvr-icon-back hvr-sweep-to-left hvr-grow wow animate__zoomIn" data-wow-duration="0.5s" @click="changeToDetails('poster')">
+      <button
+        class="btn hvr-icon-back hvr-sweep-to-left hvr-grow wow animate__zoomIn"
+        data-wow-duration="0.5s"
+        @click="changeToDetails('poster')"
+      >
         <ion-icon name="arrow-back-outline" class="hvr-icon"></ion-icon>
         Prev
       </button>
-      <button class="btn hvr-icon-forward hvr-sweep-to-right hvr-grow wow animate__zoomIn" data-wow-duration="0.7s" @click="changeToDetails('end')">
+      <button
+        class="btn hvr-icon-forward hvr-sweep-to-right hvr-grow wow animate__zoomIn"
+        data-wow-duration="0.7s"
+        @click="changeToDetails('end')"
+      >
         Next
         <ion-icon name="arrow-forward-outline" class="hvr-icon"></ion-icon>
       </button>
@@ -24,7 +46,10 @@
 import ImagesSlider from "@/components/ImagesSlider.vue";
 import FireWorksAction from "@/components/FireWorksAction.vue";
 import TimeLine from "@/components/TimeLine.vue";
+import TextShadows from "@/components/TextShadows.vue";
 import WOW from "wow.js";
+import { importImages } from "@/utils/utils";
+import { CONST } from "@/constants/constants";
 
 export default {
   name: "HomeDetails",
@@ -32,22 +57,51 @@ export default {
     ImagesSlider,
     FireWorksAction,
     TimeLine,
+    TextShadows,
   },
   data() {
-    return {};
+    return {
+      timelineKey: undefined,
+      timelineTitle: 'PE225',
+      clicked: [],
+    };
+  },
+  computed: {
+    images() {
+      if (undefined === this.timelineKey) {
+        return [];
+      }
+
+      const target = this.findTimeline(this.timelineKey);
+      return importImages(target.key, target.srcImages);
+    },
   },
   mounted() {
     new WOW().init();
   },
+  watch: {
+    timelineKey(newVal) {
+      if (undefined !== newVal) {
+        this.timelineTitle = this.findTimeline(newVal).value;
+      }
+    },
+  },
   methods: {
     changeToDetails(moveTo) {
-      this.$emit('change-to-details', moveTo);
-    }
-  }
+      this.$emit("change-to-details", moveTo);
+    },
+    changeTimeline(key) {
+      this.timelineKey = key;
+    },
+    findTimeline(key) {
+      return CONST.TIMELINE.find((tl) => tl.key === key);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css?family=Titan+One");
 @import "@/scss/variables.scss";
 
 .details {
@@ -67,7 +121,7 @@ export default {
     height: 100%;
     overflow: hidden;
     margin: 0 2rem;
-    gap: 10px;
+    gap: 2vw;
 
     > div {
       &:first-child {
@@ -75,6 +129,31 @@ export default {
       }
       &:last-child {
         flex-basis: 60%;
+      }
+    }
+
+    .moments {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: $details-height;
+      gap: 5vh;
+
+      &__text-shadow {
+        margin-top: 40px;
+        font-family: "Titan One", sans-serif;
+        font-size: 70px;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+        letter-spacing: 5px;
+        text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
+      }
+
+      .coverflow {
+        top: 50%;
+        transform: translateY(-100%);
       }
     }
   }

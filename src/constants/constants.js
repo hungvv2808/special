@@ -3,92 +3,52 @@ export const CONST = {
     { 
       key: '202302',
       value: '2023-02',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202301',
       value: '2023-01',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202212',
       value: '2022-12',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202211',
       value: '2022-11',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202210',
       value: '2022-10',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202209',
       value: '2022-09',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202208',
       value: '2022-08',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202207',
       value: '2022-07',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202206',
       value: '2022-06',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }, 
     { 
       key: '202205',
       value: '2022-05',
-      icon: '',
-      description: 'Hello',
-      animations: {
-        animate: '',
-      }
+      srcImages: require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/),
     }
   ],
   PAGES: {
