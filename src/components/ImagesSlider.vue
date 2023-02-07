@@ -3,7 +3,7 @@
     <swiper class="swiper" v-bind="options">
       <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
         <img
-          class="hvr-grow"
+          :class="`hvr-grow ${image.isRotate ? 'rotate-' + (image.rotate > 0 ? image.rotate : 'minus' + image.rotate) : ''}`"
           :src="require(`@/assets/u/${image.src}/${image.path}`)"
         />
       </swiper-slide>
@@ -87,6 +87,16 @@ export default {
         height: 100%;
         object-fit: cover;
         border-radius: 20px;
+      }
+
+      .rotate-minus-90 {
+        transform: rotate(-90deg);
+      }
+      .rotate-90 {
+        transform: rotate(90deg);
+      }
+      .rotate-180 {
+        transform: rotate(180deg);
       }
     }
 

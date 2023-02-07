@@ -63,7 +63,6 @@ export default {
     return {
       timelineKey: undefined,
       timelineTitle: 'PE225',
-      clicked: [],
     };
   },
   computed: {
@@ -96,6 +95,18 @@ export default {
     findTimeline(key) {
       return CONST.TIMELINE.find((tl) => tl.key === key);
     },
+    arrowEvents() {
+      // const arrowUp = 38;
+      // const arrowDown = 40;
+      // window.addEventListener('keydown', (e) => {
+      //   if (arrowUp === e.keyCode) {
+          
+      //   }
+      //   if (arrowDown === e.keyCode) {
+          
+      //   }
+      // })
+    }
   },
 };
 </script>
