@@ -3,21 +3,23 @@
     <swiper class="swiper" v-bind="options">
       <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
         <img
-          :class="`hvr-grow ${image.isRotate ? 'rotate-' + (image.rotate > 0 ? image.rotate : 'minus' + image.rotate) : ''}`"
+          :class="`hvr-grow swiper-lazy ${image.isRotate ? 'rotate-' + (image.rotate > 0 ? image.rotate : 'minus' + image.rotate) : ''}`"
           :src="require(`@/assets/u/${image.src}/${image.path}`)"
         />
+        <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
       </swiper-slide>
     </swiper>
   </div>
 </template>
 
 <script>
-import { Pagination, Navigation, EffectCoverflow, Autoplay, Keyboard } from "swiper";
+import { Pagination, Navigation, EffectCoverflow, Autoplay, Keyboard, Lazy } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
+import 'swiper/css/lazy';
 import { CONST } from "@/constants/constants";
 
 export default {
@@ -32,7 +34,7 @@ export default {
   },
   setup() {
     return {
-      modules: [Pagination, Navigation, EffectCoverflow, Autoplay, Keyboard],
+      modules: [Pagination, Navigation, EffectCoverflow, Autoplay, Keyboard, Lazy],
     };
   },
   data() {
@@ -59,6 +61,7 @@ export default {
           disableOnInteraction: false,
         },
         keyboard: { enabled: true },
+        lazy: true,
       },
       sourceImages: [],
     };
