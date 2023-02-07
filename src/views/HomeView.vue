@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      isChange: CONST.PAGES.end,
+      isChange: CONST.PAGES.poster,
       pages: CONST.PAGES,
     };
   },
