@@ -81,23 +81,22 @@ export default {
     const source202205 = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
 
     this.sourceImages = {
-      '202302': this.importImages(source202302),
-      '202301': this.importImages(source202301),
-      '202212': this.importImages(source202212),
-      '202211': this.importImages(source202211),
-      '202210': this.importImages(source202210),
-      '202209': this.importImages(source202209),
-      '202208': this.importImages(source202208),
-      '202207': this.importImages(source202207),
-      '202206': this.importImages(source202206),
-      '202205': this.importImages(source202205),
+      '202302': this.importImages('202302', source202302),
+      '202301': this.importImages('202301', source202301),
+      '202212': this.importImages('202212', source202212),
+      '202211': this.importImages('202211', source202211),
+      '202210': this.importImages('202210', source202210),
+      '202209': this.importImages('202209', source202209),
+      '202208': this.importImages('202208', source202208),
+      '202207': this.importImages('202207', source202207),
+      '202206': this.importImages('202206', source202206),
+      '202205': this.importImages('202205', source202205),
     }
   },
   methods: {
-    importImages(data) {
+    importImages(src, data) {
       let images = [];
       const rotateImages = CONST.rotateImages;
-      const src = data.id.split(' ').at(0).split('/').at(-1);
 
       data.keys().forEach((key) => {
         const name = key.split('/').at(-1);

@@ -62,7 +62,6 @@ export default {
     return {
       timelineKey: undefined,
       timelineTitle: 'PE225',
-      sourceImages: [],
     };
   },
   computed: {
