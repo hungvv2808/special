@@ -63,6 +63,7 @@ export default {
     return {
       timelineKey: undefined,
       timelineTitle: 'PE225',
+      sourceImages: [],
     };
   },
   computed: {
@@ -71,8 +72,11 @@ export default {
         return [];
       }
 
-      return importImages(this.timelineKey, this.importSourceImages(this.timelineKey));
+      return importImages(this.timelineKey, this.sourceImages[this.timelineKey]);
     },
+  },
+  created() {
+    this.importSourceImages();
   },
   mounted() {
     new WOW().init();
@@ -94,42 +98,30 @@ export default {
     findTimeline(key) {
       return CONST.TIMELINE.find((tl) => tl.key === key);
     },
-    importSourceImages(key) {
-      let sourceImages = undefined;
-      switch(key) {
-        case '202302': 
-          sourceImages = require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202301': 
-          sourceImages = require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202212': 
-          sourceImages = require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202211': 
-          sourceImages = require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202210': 
-          sourceImages = require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202209': 
-          sourceImages = require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202208': 
-          sourceImages = require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202207': 
-          sourceImages = require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202206': 
-          sourceImages = require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-        case '202205': 
-          sourceImages = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-          break;
-      }
+    importSourceImages() {
+      const source202302 = require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202301 = require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202212 = require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202211 = require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202210 = require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202209 = require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202208 = require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202207 = require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202206 = require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+      const source202205 = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
 
-      return sourceImages;
+      this.sourceImages = {
+        '202302': source202302,
+        '202301': source202301,
+        '202212': source202212,
+        '202211': source202211,
+        '202210': source202210,
+        '202209': source202209,
+        '202208': source202208,
+        '202207': source202207,
+        '202206': source202206,
+        '202205': source202205,
+      }
     },
     arrowEvents() {
       // const arrowUp = 38;
