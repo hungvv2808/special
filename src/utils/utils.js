@@ -1,8 +1,9 @@
 import { CONST } from "@/constants/constants";
 
-export function importImages(src, data) {
+export function importImages(data) {
   let images = [];
   const rotateImages = CONST.rotateImages;
+  const src = data.id.split(' ').at(0).split('/').at(-1);
 
   data.keys().forEach((key) => {
     const name = key.split('/').at(-1);

@@ -4,10 +4,10 @@
       <time-line @change-timeline="changeTimeline" />
       <div
         class="moments"
-        v-if="undefined !== timelineKey && images.length > 0"
+        v-if="undefined !== timelineKey"
       >
         <text-shadows class="wow animate__bounce" data-wow-duration="1s" :label="timelineTitle" />
-        <images-slider class="wow animate__bounce" data-wow-duration="2s" :images="images" />
+        <images-slider class="wow animate__bounce" data-wow-duration="2s" :timeline-key="timelineKey" />
       </div>
       <div class="moments" style="justify-content: center" v-else>
         <p
@@ -48,7 +48,6 @@ import FireWorksAction from "@/components/FireWorksAction.vue";
 import TimeLine from "@/components/TimeLine.vue";
 import TextShadows from "@/components/TextShadows.vue";
 import WOW from "wow.js";
-import { importImages } from "@/utils/utils";
 import { CONST } from "@/constants/constants";
 
 export default {
@@ -67,34 +66,6 @@ export default {
     };
   },
   computed: {
-    images() {
-      return undefined !== this.timelineKey ? this.sourceImages[this.timelineKey] : [];
-    },
-  },
-  created() {
-    const source202302 = require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202301 = require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202212 = require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202211 = require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202210 = require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202209 = require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202208 = require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202207 = require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202206 = require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-    const source202205 = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-
-    this.sourceImages = {
-      '202302': importImages('202302', source202302),
-      '202301': importImages('202301', source202301),
-      '202212': importImages('202212', source202212),
-      '202211': importImages('202211', source202211),
-      '202210': importImages('202210', source202210),
-      '202209': importImages('202209', source202209),
-      '202208': importImages('202208', source202208),
-      '202207': importImages('202207', source202207),
-      '202206': importImages('202206', source202206),
-      '202205': importImages('202205', source202205),
-    }
   },
   mounted() {
     new WOW().init();

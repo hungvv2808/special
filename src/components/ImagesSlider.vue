@@ -18,11 +18,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
+import { CONST } from "@/constants/constants";
 
 export default {
   name: "ImagesSlider",
   props: {
-    images: Array,
+    // images: Array,
+    timelineKey: String,
   },
   components: {
     Swiper,
@@ -58,8 +60,59 @@ export default {
         },
         keyboard: { enabled: true },
       },
+      sourceImages: [],
     };
   },
+  computed: {
+    images() {
+      return this.sourceImages[this.timelineKey];
+    }
+  },
+  created() {
+    const source202302 = require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202301 = require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202212 = require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202211 = require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202210 = require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202209 = require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202208 = require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202207 = require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202206 = require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202205 = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+
+    this.sourceImages = {
+      '202302': this.importImages(source202302),
+      '202301': this.importImages(source202301),
+      '202212': this.importImages(source202212),
+      '202211': this.importImages(source202211),
+      '202210': this.importImages(source202210),
+      '202209': this.importImages(source202209),
+      '202208': this.importImages(source202208),
+      '202207': this.importImages(source202207),
+      '202206': this.importImages(source202206),
+      '202205': this.importImages(source202205),
+    }
+  },
+  methods: {
+    importImages(data) {
+      let images = [];
+      const rotateImages = CONST.rotateImages;
+      const src = data.id.split(' ').at(0).split('/').at(-1);
+
+      data.keys().forEach((key) => {
+        const name = key.split('/').at(-1);
+        images.push({
+          src: src,
+          title: name,
+          path: key.replace("./", ""),
+          isRotate: Object.keys(rotateImages).includes(name),
+          rotate: undefined !== rotateImages[name] ? rotateImages[name].rotate : 0,
+        })
+      });
+
+      return images;
+    }
+  }
 };
 </script>
 
