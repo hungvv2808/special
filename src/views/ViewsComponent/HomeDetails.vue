@@ -71,8 +71,7 @@ export default {
         return [];
       }
 
-      const target = this.findTimeline(this.timelineKey);
-      return importImages(target.key, target.srcImages);
+      return importImages(this.timelineKey, this.importSourceImages(this.timelineKey));
     },
   },
   mounted() {
@@ -94,6 +93,43 @@ export default {
     },
     findTimeline(key) {
       return CONST.TIMELINE.find((tl) => tl.key === key);
+    },
+    importSourceImages(key) {
+      let sourceImages = undefined;
+      switch(key) {
+        case '202302': 
+          sourceImages = require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202301': 
+          sourceImages = require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202212': 
+          sourceImages = require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202211': 
+          sourceImages = require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202210': 
+          sourceImages = require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202209': 
+          sourceImages = require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202208': 
+          sourceImages = require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202207': 
+          sourceImages = require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202206': 
+          sourceImages = require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+        case '202205': 
+          sourceImages = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+          break;
+      }
+
+      return sourceImages;
     },
     arrowEvents() {
       // const arrowUp = 38;
