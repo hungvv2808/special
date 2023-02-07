@@ -3,8 +3,9 @@
     <div
       v-for="(tl, index) in timelines"
       :class="`timeline hvr-rotate wow animate__bounceIn${0 === index % 2 ? 'Left' : 'Right'}`"
-      :key="tl.key"
+      :key="index"
       :data-wow-duration="`${setTimeDuration(index)}s`"
+      @click="() => {$emit('change-timeline', tl.key)}"
     >
       <div class="timeline-content">
         <h3 class="title">{{ tl.value }}</h3>
@@ -48,9 +49,8 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple,
   $brown, $red, $grey;
 
 .yearly-timeline {
-  width: 53vw;
-  height: 92vh;
-  margin: 2rem auto;
+  width: 100%;
+  height: $details-height;
   overflow: hidden scroll;
 
   &::-webkit-scrollbar {
@@ -68,6 +68,10 @@ $border-colors: $blue, $pink, $orange, $yellow, $green, $yellow-light, $purple,
     padding: 0 30px 30px 0;
     float: left;
     position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &.wow {
       visibility: hidden;

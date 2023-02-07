@@ -25,7 +25,7 @@ export default {
   overflow-x: hidden;
 
   h1 {
-    font-size: 3.5vw;
+    font-size: 2vw;
     position: relative;
     width: max-content; 
     font-weight: normal;

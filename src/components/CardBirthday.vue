@@ -45,10 +45,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$card-width: 350px;
+$card-height: 450px;
+
 .birthday-card {
   position: relative;
-  width: 250px;
-  height: 350px;
+  width: $card-width;
+  height: $card-height;
   cursor: pointer;
   transform-style: preserve-3d;
   transform: perspective(2500px);
@@ -73,8 +76,8 @@ export default {
   .card-front {
     position: relative;
     background-color: #fff;
-    width: 250px;
-    height: 350px;
+    width: $card-width;
+    height: $card-height;
     overflow: hidden;
     transform-origin: left;
     box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.13),
@@ -83,21 +86,22 @@ export default {
 
     .wrap-deco {
       position: absolute;
-      top: -230px;
-      left: -200px;
+      top: -255px;
+      left: -194px;
     }
     .wrap-deco-two {
       transform: scaleX(-1);
       position: absolute;
-      top: -230px;
-      left: 445px;
+      top: -181px;
+      left: 539px;
     }
     .plate {
       position: absolute;
       width: 130px;
       height: 5px;
       background-color: #00bbf9;
-      left: 60px;
+      left: 50%;
+      transform: translateX(-50%);
       top: 213px;
 
       &:before {
@@ -166,8 +170,8 @@ export default {
   .card-inside {
     position: absolute;
     background-color: #fff;
-    width: 250px;
-    height: 350px;
+    width: $card-width;
+    height: $card-height;
     z-index: -1;
     left: 0;
     top: 0;
