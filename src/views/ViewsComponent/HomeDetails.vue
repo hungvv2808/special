@@ -68,15 +68,33 @@ export default {
   },
   computed: {
     images() {
-      if (undefined === this.timelineKey) {
-        return [];
-      }
-
-      return importImages(this.timelineKey, this.sourceImages[this.timelineKey]);
+      return undefined !== this.timelineKey ? this.sourceImages[this.timelineKey] : [];
     },
   },
   created() {
-    this.importSourceImages();
+    const source202302 = require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202301 = require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202212 = require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202211 = require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202210 = require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202209 = require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202208 = require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202207 = require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202206 = require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+    const source202205 = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
+
+    this.sourceImages = {
+      '202302': importImages('202302', source202302),
+      '202301': importImages('202301', source202301),
+      '202212': importImages('202212', source202212),
+      '202211': importImages('202211', source202211),
+      '202210': importImages('202210', source202210),
+      '202209': importImages('202209', source202209),
+      '202208': importImages('202208', source202208),
+      '202207': importImages('202207', source202207),
+      '202206': importImages('202206', source202206),
+      '202205': importImages('202205', source202205),
+    }
   },
   mounted() {
     new WOW().init();
@@ -98,43 +116,6 @@ export default {
     findTimeline(key) {
       return CONST.TIMELINE.find((tl) => tl.key === key);
     },
-    importSourceImages() {
-      const source202302 = require.context("@/assets/u/202302/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202301 = require.context("@/assets/u/202301/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202212 = require.context("@/assets/u/202212/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202211 = require.context("@/assets/u/202211/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202210 = require.context("@/assets/u/202210/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202209 = require.context("@/assets/u/202209/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202208 = require.context("@/assets/u/202208/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202207 = require.context("@/assets/u/202207/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202206 = require.context("@/assets/u/202206/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-      const source202205 = require.context("@/assets/u/202205/", true, /(\.jpg|\.JPG|\.jpeg|\.JPEG|\.png|\.PNG|\.webp)$/);
-
-      this.sourceImages = {
-        '202302': source202302,
-        '202301': source202301,
-        '202212': source202212,
-        '202211': source202211,
-        '202210': source202210,
-        '202209': source202209,
-        '202208': source202208,
-        '202207': source202207,
-        '202206': source202206,
-        '202205': source202205,
-      }
-    },
-    arrowEvents() {
-      // const arrowUp = 38;
-      // const arrowDown = 40;
-      // window.addEventListener('keydown', (e) => {
-      //   if (arrowUp === e.keyCode) {
-          
-      //   }
-      //   if (arrowDown === e.keyCode) {
-          
-      //   }
-      // })
-    }
   },
 };
 </script>
