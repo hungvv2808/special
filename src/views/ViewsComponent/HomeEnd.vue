@@ -4,7 +4,7 @@
       <type-writer :dataTexts="dataTexts" />
     </div>
     <div class="end__element">
-      <card-birthday />
+      <card-birthday class="wow animate__rotateIn" data-wow-duration="10s" />
     </div>
   </div>
 </template>
