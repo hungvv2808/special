@@ -93,6 +93,7 @@ export default {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css?family=Titan+One");
 @import "@/scss/variables.scss";
+@import "@/scss/extends/display.scss";
 
 .details {
   display: flex;
@@ -135,10 +136,7 @@ export default {
         font-family: "Titan One", sans-serif;
         font-size: 70px;
         font-weight: bold;
-        color: #fff;
-        text-align: center;
-        letter-spacing: 5px;
-        text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
+        @extend %effect-text-shadow;
       }
 
       .text-shadows {

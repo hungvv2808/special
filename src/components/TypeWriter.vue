@@ -99,10 +99,6 @@ export default {
   font-family: "Courier New";
   white-space: pre-line;
 }
-/* #typewriter:after {
-  content: "|";
-  animation: blink 500ms linear infinite alternate;
-} */
 
 @keyframes blink {
   0% {

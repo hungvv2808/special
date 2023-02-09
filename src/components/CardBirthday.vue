@@ -2,9 +2,9 @@
   <div class="birthday-card">
     <div class="card-front">
       <div class="front-text">
-        <h3 class="happy">HAPPY</h3>
-        <h2 class="bday">BIRTHDAY</h2>
-        <h3 class="toyou">to you!</h3>
+        <h3 class="happy">{{labels.happy}}</h3>
+        <h3 class="bday">{{labels.birthday}}</h3>
+        <h3 class="toyou">{{labels.you}}</h3>
       </div>
       <div class="wrap-deco">
         <div class="decorations"></div>
@@ -22,17 +22,15 @@
 
     <div class="card-inside">
       <div class="inside-text">
-        <h3 class="happy">HAPPY</h3>
-        <h2 class="bday">BIRTHDAY</h2>
-        <h3 class="toyou">to you!</h3>
+        <h3 class="happy custom">{{labels.happy}}</h3>
+        <h3 class="bday custom">{{labels.birthday}}</h3>
+        <h3 class="toyou custom">{{labels.you}}</h3>
       </div>
       <div class="wishes">
-        <p>Dear Friend,</p>
-        <p>
-          Happy birthday!! I hope your day is filled with lots of love and
-          laughter! May all of your birthday wishes come true.
-        </p>
-        <p class="name">xxx</p>
+        <p class="to">{{contents.to}}</p>
+        <p>{{contents.wishes}}</p>
+        <p>{{contents.wishesAfter}}</p>
+        <p class="name">{{contents.from}}</p>
       </div>
     </div>
   </div>
@@ -41,10 +39,31 @@
 <script>
 export default {
   name: "CardBirthday",
+  data() {
+    return {
+      labels: {
+        happy: 'happy',
+        birthday: 'birthday',
+        you: 'lover',
+      },
+      contents: {
+        to: 'Dear Sweetheart,',
+        wishes: 'You are the reason why I smile every day. Our flames of passion will never be extinguished and may our love shine brightly to bring you a wonderful birthday.',
+        wishesAfter: 'I LOVE YOU and Happy Birthday!',
+        from: 'Parker Vu.',
+      }
+    }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css?family=Titan+One");
+@import url("https://fonts.googleapis.com/css?family=Caveat+Brush");
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
+@import "@/scss/variables.scss";
+@import "@/scss/extends/display.scss";
+
 $card-width: 350px;
 $card-height: 450px;
 
@@ -65,9 +84,9 @@ $card-height: 450px;
     .card-front {
       transform: rotateY(-160deg);
     }
-    .front-text, 
-    .wrap-deco, 
-    .wrap-deco-two, 
+    .front-text,
+    .wrap-deco,
+    .wrap-deco-two,
     .plate {
       display: none;
     }
@@ -84,6 +103,10 @@ $card-height: 450px;
       30px 0 50px rgba(0, 0, 0, 0.1);
     transition: 0.4s;
 
+    .front-text {
+      position: relative;
+      top: 5%;
+    }
     .wrap-deco {
       position: absolute;
       top: -255px;
@@ -150,8 +173,8 @@ $card-height: 450px;
           top: 5px;
           border-radius: 20px;
           box-shadow: 10px 5px #f15bb5, 20px 0px #432818, 30px 2px #f15bb5,
-            40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818, 70px 5px #f15bb5,
-            80px 5px #432818, 90px 5px #f15bb5;
+            40px 5px #432818, 50px 5px #f15bb5, 60px 0px #432818,
+            70px 5px #f15bb5, 80px 5px #432818, 90px 5px #f15bb5;
         }
       }
       .flame {
@@ -184,40 +207,49 @@ $card-height: 450px;
     }
     .wishes {
       position: relative;
-      top: -100px;
+      top: -110px;
       margin: 25px;
 
       p {
-        font-family: "Brush Script MT", cursive;
+        font-family: "Caveat Brush", "Brush Script MT", cursive;
         color: #333;
-      }
+        font-size: 20px;
+        text-align: justify;
 
-      .name {
-        margin-left: 150px;
+        &.to {
+          text-align: left;
+          padding-left: 5px;
+        }
+        &.name {
+          text-align: right;
+          padding-right: 10px;
+        }
       }
     }
   }
 
   .happy,
+  .bday,
   .toyou {
+    @extend %effect-text-shadow;
     position: relative;
-    font-family: didot;
+    font-family: "Pacifico", sans-serif;
     text-align: center;
     backface-visibility: hidden;
     font-size: 30px;
+    color: $brown;
+    letter-spacing: 0px;
+    text-transform: uppercase;
   }
+
   .happy {
-    top: 198px;
-  }
-  .toyou {
-    top: 123px;
+    top: 200px;
   }
   .bday {
-    position: relative;
-    font-family: arial;
-    font-size: 35px;
-    text-align: center;
-    top: 163px;
+    top: 165px;
+  }
+  .toyou {
+    top: 130px;
   }
 
   .decorations {

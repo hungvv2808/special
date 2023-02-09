@@ -1,6 +1,6 @@
 <template>
   <div class="end">
-    <div class="end__element" ref="wishes">
+    <div class="end__element">
       <type-writer :dataTexts="dataTexts" />
     </div>
     <div class="end__element">
@@ -13,7 +13,7 @@
 // import TextTyping from "@/components/TextTyping.vue";
 import TypeWriter from "@/components/TypeWriter.vue";
 import CardBirthday from "@/components/CardBirthday.vue";
-import { CONST } from '@/constants/constants';
+import { CONST } from "@/constants/constants";
 import WOW from "wow.js";
 
 export default {
@@ -25,10 +25,10 @@ export default {
   },
   data() {
     return {
-      text: 'Hello, my name is Parker.',
+      text: "Hello, my name is Parker.",
       dataTexts: CONST.wishes,
       duration: 2.5,
-    }
+    };
   },
   mounted() {
     new WOW().init();
@@ -46,6 +46,11 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .type-writer {
+      width: 100%;
+      text-align: left;
+    }
 
     .text {
       width: 100%;
