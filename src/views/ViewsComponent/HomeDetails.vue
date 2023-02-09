@@ -141,6 +141,11 @@ export default {
         text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
       }
 
+      .text-shadows {
+        position: relative;
+        top: 10%;
+      }
+
       .coverflow {
         top: 50%;
         transform: translateY(-100%);

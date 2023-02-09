@@ -1,45 +1,15 @@
 export const CONST = {
   TIMELINE: [
-    {
-      key: "202302",
-      value: "2023-02",
-    },
-    {
-      key: "202301",
-      value: "2023-01",
-    },
-    {
-      key: "202212",
-      value: "2022-12",
-    },
-    {
-      key: "202211",
-      value: "2022-11",
-    },
-    {
-      key: "202210",
-      value: "2022-10",
-    },
-    {
-      key: "202209",
-      value: "2022-09",
-    },
-    {
-      key: "202208",
-      value: "2022-08",
-    },
-    {
-      key: "202207",
-      value: "2022-07",
-    },
-    {
-      key: "202206",
-      value: "2022-06",
-    },
-    {
-      key: "202205",
-      value: "2022-05",
-    },
+    { key: "202302", value: "2023-02", },
+    { key: "202301", value: "2023-01", },
+    { key: "202212", value: "2022-12", },
+    { key: "202211", value: "2022-11", },
+    { key: "202210", value: "2022-10", },
+    { key: "202209", value: "2022-09", },
+    { key: "202208", value: "2022-08", },
+    { key: "202207", value: "2022-07", },
+    { key: "202206", value: "2022-06", },
+    { key: "202205", value: "2022-05", },
   ],
   PAGES: {
     poster: 0,
@@ -100,4 +70,16 @@ export const CONST = {
     "IMG_0957.jpeg.webp": { name: "IMG_0957.jpeg.webp", rotate: 90 },
     "IMG_0964.jpeg.webp": { name: "IMG_0964.jpeg.webp", rotate: 90 },
   },
+  wishes: [
+    'Hello, 0.',
+    'Hello,1.',
+    'Hello,2.',
+    'Hello,3.',
+    'Hello,4.',
+    'Hello,5.',
+    'Hello,6.',
+    'Hello,7.',
+    'Hello,8.',
+    'Hello,9.',
+  ],
 };

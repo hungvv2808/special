@@ -1,5 +1,20 @@
 <template>
   <div class="coverflow">
+    <svg>
+      <filter id="noise">
+        <feTurbulence baseFrequency="0.01 0.003" type="turbulence">
+          <animate 
+            attributeName="baseFrequency" 
+            calcMode="linear"
+            values="0.001 0.005;0.001 0.001;0.03 0.09" 
+            begin="0s"
+            dur="2.5s" 
+            repeatCount="indefinite" 
+            />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="5">
+      </feDisplacementMap></filter>
+    </svg>
     <swiper class="swiper" v-bind="options">
       <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
         <img
@@ -25,7 +40,6 @@ import { CONST } from "@/constants/constants";
 export default {
   name: "ImagesSlider",
   props: {
-    // images: Array,
     timelineKey: String,
   },
   components: {
@@ -57,7 +71,7 @@ export default {
           slideShadows: true,
         },
         autoplay: {
-          delay: 2500,
+          delay: 2600,
           disableOnInteraction: false,
         },
         keyboard: { enabled: true },
@@ -126,6 +140,10 @@ export default {
   width: 57vw;
   height: 300px;
 
+  svg {
+    display: none;
+  }
+
   .swiper {
     height: 100%;
     width: 100%;
@@ -161,6 +179,15 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &-active {
+          img {
+            filter: url('#noise');
+            &:hover {
+              filter: none;
+            }
+          }
+        }
 
         &-shadow-left,
         &-shadow-right {

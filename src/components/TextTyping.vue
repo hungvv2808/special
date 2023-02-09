@@ -1,6 +1,6 @@
 <template>
   <div class="text-typing">
-    <h1>Hello, my name is Parker.</h1>
+    <h1>{{text}}</h1>
   </div>
 </template>
 
@@ -37,6 +37,7 @@ export default {
       left: 0;
       height: 100%;
     }
+
     &::before {
       background: $background--end;
       animation: write 2.5s steps(25) 0.5s forwards; /* Number of steps */
@@ -56,7 +57,6 @@ export default {
   to {
     left: 100%;
   }
-  
 }
 
 @keyframes blink {
@@ -73,4 +73,4 @@ export default {
      opacity: 1;
   }
 }
-</style>z
+</style>
