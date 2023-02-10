@@ -1,7 +1,7 @@
 <template>
   <div class="type-writer">
     <pre id="typewriter" ref="typewriter">
-      <span class="text" v-for="(t, i) in dataTexts" :key="i">{{t}}</span> 
+      <span :class="`${t.class}`" v-for="(t, i) in dataTexts" :key="i">{{t.value}}</span> 
     </pre>
   </div>
 </template>
@@ -13,7 +13,9 @@ export default {
     dataTexts: Array,
   },
   data() {
-    return {}
+    return {
+      
+    }
   },
   mounted() {
     this.setupTypewriter(this.$refs.typewriter).type();
@@ -28,7 +30,7 @@ export default {
         tag = "",
         writingTag = false,
         tagOpen = false,
-        typeSpeed = 100,
+        typeSpeed = 20,
         tempTypeSpeed = 0;
 
       var type = function () {
@@ -85,16 +87,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/scss/variables.scss";
+@import "@/scss/extends/display.scss";
+
 .var-highlight {
   color: #c0ad60;
 }
 
 .string-highlight {
-  color: rgba(253, 149, 90, 0.8);
+  color: $brown;
+  font-weight: bold;
+  font-style: italic;
 }
 
 #typewriter {
-  font-size: 2em;
+  font-size: 1.2em;
   margin: 0;
   font-family: "Courier New";
   white-space: pre-line;

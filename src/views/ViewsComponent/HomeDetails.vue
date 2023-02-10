@@ -47,11 +47,13 @@ import ImagesSlider from "@/components/ImagesSlider.vue";
 import FireWorksAction from "@/components/FireWorksAction.vue";
 import TimeLine from "@/components/TimeLine.vue";
 import TextShadows from "@/components/TextShadows.vue";
-import WOW from "wow.js";
-import { CONST } from "@/constants/constants";
+import { homeMixin } from "@/mixins/home-mixin";
 
 export default {
   name: "HomeDetails",
+  mixins: [
+    homeMixin
+  ],
   components: {
     ImagesSlider,
     FireWorksAction,
@@ -66,9 +68,7 @@ export default {
   },
   computed: {
   },
-  mounted() {
-    new WOW().init();
-  },
+  mounted() {},
   watch: {
     timelineKey(newVal) {
       if (undefined !== newVal) {
@@ -77,14 +77,11 @@ export default {
     },
   },
   methods: {
-    changeToDetails(moveTo) {
-      this.$emit("change-to-details", moveTo);
-    },
     changeTimeline(key) {
       this.timelineKey = key;
     },
     findTimeline(key) {
-      return CONST.TIMELINE.find((tl) => tl.key === key);
+      return this.timelines.find((tl) => tl.key === key);
     },
   },
 };
@@ -158,36 +155,7 @@ export default {
     overflow: hidden;
   }
   &__buttons {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    z-index: 2;
-    display: flex;
-    gap: 15px;
-    /* width: 100%; */
-    /* justify-content: center; */
-
-    .btn {
-      padding: 0;
-      border: none;
-      border-radius: 40px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 120px;
-      height: 40px;
-      gap: 5px;
-    }
-
-    [class*="hvr-"]:not(.hvr-icon) {
-      transition-duration: 0.3s;
-      background: $yellow;
-
-      &::before {
-        background: $pink;
-      }
-    }
+    @extend %buttons;
   }
 }
 </style>

@@ -5,7 +5,7 @@
     <cake-cup />
     <button-temp
       :label="'Let\'s go'"
-      @click="changeToDetails"
+      @click="changeToDetails('details')"
     />
   </div>
 </template>
@@ -15,20 +15,20 @@ import ButtonTemp from "@/components/ButtonTemp.vue";
 import BoxGift from "@/components/BoxGift.vue";
 import CakeCup from "@/components/CakeCup.vue";
 import TextShadows from "@/components/TextShadows.vue";
+import { homeMixin } from "@/mixins/home-mixin";
 
 export default {
   name: "HomePoster",
+  mixins: [
+    homeMixin
+  ],
   components: {
     BoxGift,
     CakeCup,
     TextShadows,
     ButtonTemp,
   },
-  methods: {
-    changeToDetails() {
-      this.$emit('change-to-details', 'details');
-    }
-  }
+  methods: {},
 };
 </script>
 
