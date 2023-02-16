@@ -34,7 +34,7 @@
 @media screen and (max-width: 767px) {
   .home {
     &__welcome {
-      ::v-deep {
+      :deep {
         .text-shadows {
           z-index: 2;
           top: 85%;
@@ -51,7 +51,7 @@
       }
     }
     &__detail {
-      ::v-deep {
+      :deep {
         .details {
           &__data {
             flex-direction: column;
@@ -106,7 +106,7 @@
       }
     }
     &__end {
-      ::v-deep {
+      :deep {
         .end {
           flex-direction: column;
           overflow: hidden scroll;

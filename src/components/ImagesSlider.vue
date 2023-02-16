@@ -18,7 +18,7 @@
     <swiper class="swiper" v-bind="options">
       <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
         <img
-          :class="`hvr-grow swiper-lazy ${image.isRotate ? 'rotate-' + (image.rotate > 0 ? image.rotate : 'minus' + image.rotate) : ''}`"
+          :class="`swiper-lazy ${image.isRotate ? 'rotate-' + (image.rotate > 0 ? image.rotate : 'minus' + image.rotate) : ''}`"
           :src="require(`@/assets/u/${image.src}/${image.path}`)"
         />
         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
@@ -71,7 +71,7 @@ export default {
           slideShadows: true,
         },
         autoplay: {
-          delay: 2600,
+          delay: CONST.delay,
           disableOnInteraction: false,
         },
         keyboard: { enabled: true },
@@ -183,9 +183,9 @@ export default {
         &-active {
           img {
             filter: url('#noise');
-            &:hover {
+            /* &:hover {
               filter: none;
-            }
+            } */
           }
         }
 

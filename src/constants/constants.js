@@ -80,4 +80,5 @@ export const CONST = {
     { value: '"Let\'s understand together, realize our dreams together, and walk together on the next path, I hope everything will always go well for us. I love you."', class: 'string-highlight' },
     { value: 'Finally take a look at the greeting card I made for you, look on the right 👉', class: '' },
   ],
+  delay: 2600,
 };

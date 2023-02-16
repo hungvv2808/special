@@ -78,7 +78,7 @@ export default {
       .text-typing {
         width: initial;
 
-        ::v-deep {
+        :deep {
           h1 {
             margin: 0.5em 0;
           }
